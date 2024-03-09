@@ -1,3 +1,8 @@
+# RECOMPILED VERSION OF MTK_UARTBOOT FOR ARM/RASPBERRY PI
+ 
+[981213/mtk_uartboot](https://github.com/981213/mtk_uartboot) (original version)
+
+
 A third-party tool to load and execute binaries over UART for Mediatek SoCs.
 
 The BootROM recovery support on Mediatek smartphone SoCs is also available on their ARM-based router SoCs over UART. However, there's no SP Flash Tool and accompanying download agent released for these router chips.
