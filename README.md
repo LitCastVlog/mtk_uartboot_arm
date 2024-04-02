@@ -61,3 +61,27 @@ This utility also supports a UART-boot protocol available in BL2 on Mediatek rou
 ```
 ./mtk_uartboot -p bl2.bin --aarch64 -f bl31-uboot.fip
 ```
+## Enabling UART on Raspberry Pi 4
+
+run `sudo raspi-config`
+
+select `interface`, `P6 Serial`, 
+
+select `No`when prompted "Would you like a login shell to be accessible over serial?"
+
+![serial](https://cdn.shopify.com/s/files/1/0019/4065/2092/files/no_large.png?v=1526142647)
+
+then, select `yes` when promted "Would you like the serial port hardware enabled?"
+
+![hw serial](https://cdn.shopify.com/s/files/1/0019/4065/2092/files/yes_large.png?v=1526142761)
+
+## Enable GPIO UART pin access in /boot/config.txt
+
+run `sudo nano /boot/config.txt`
+
+and the line `enable_uart=` (select any of the [4 UART pairs](https://raspberrypi.stackexchange.com/a/104466) on the PI (eg: `enable_uart=4`)
+
+save/exit and reboot,
+at which point you can connect your router to the Rx, Tx, and Gnd pins on the Pi's GPIO (eg: `24` rx, `21` tx, `20` gnd)
+
+run `./mtk_uartboot -s /ttyAMA1` from the directory you downloaded it, then proceed with the mtk_uartboot process as you nomally would
